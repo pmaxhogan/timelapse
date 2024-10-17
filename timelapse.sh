@@ -28,7 +28,7 @@ for infile in before/*.mkv; do
 
     echo '⌛' $infile $(get_duration "$infile") '('$(get_size "$infile")')' '⏩' $outfile
 
-    cp -v "$infile" "$tmpfile"
+    rsync --progress -h "$infile" "$tmpfile"
 
     ffmpeg -hide_banner -loglevel warning -stats -n\
 	 -i "$tmpfile"\
